@@ -58,11 +58,12 @@ script:
   - make vet
   - make lint
   - make gas
-  - make last
+  
+  - pwd
   - make build
-  - make run
-  - make test
-  - make cover
+  #- make run
+  #- make test
+  #- make cover
 
 after_success:
   - echo "my........ root travis.yml after_success"
