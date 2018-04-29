@@ -82,6 +82,9 @@ after_success:
   - pwd
   - cp -R coverage_badge.png $GOPATH/src/vikas-garud.github.io/models
   - echo "done"
+  - echo "my deploy...here"
+  - ./scripts/publishCoverage.sh
+
 
   #- ./scripts/calculateCoverage.sh
   #- ./scripts/publishCoverage.sh
