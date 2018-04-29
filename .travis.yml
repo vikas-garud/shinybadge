@@ -66,10 +66,10 @@ install:
   #- go get -v github.com/codeclimate/test-reporter
 
 script:
-  - make compile
-  - make vet
-  - make lint
-  - make gas
+  #- make compile
+  #- make vet
+  #- make lint
+  #- make gas
   
   - pwd
   #- make build
