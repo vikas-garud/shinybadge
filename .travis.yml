@@ -79,6 +79,10 @@ script:
 
 after_success:
   - echo "my........ root travis.yml after_success"
+  - pwd
+  - cp -R coverage_badge.png $GOPATH/src/vikas-garud.github.io/models
+  - echo "done"
+
   #- ./scripts/calculateCoverage.sh
   #- ./scripts/publishCoverage.sh
 
