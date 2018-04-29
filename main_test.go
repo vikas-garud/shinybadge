@@ -14,7 +14,7 @@ func TestCSum(T *testing.T) {
 	}
 }
 func TestGetCommandOutput(t *testing.T) {
-	getCommandOutput("echo test")
+	//getCommandOutput("echo test")
 	//getCommandOutput("echo 'testline\ncoverage: 35%'")
 }
 

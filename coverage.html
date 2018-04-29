@@ -56,7 +56,7 @@
 				
 				<option value="file0">ci.vikas.com/shinybadge/badge.go (97.9%)</option>
 				
-				<option value="file1">ci.vikas.com/shinybadge/main.go (58.1%)</option>
+				<option value="file1">ci.vikas.com/shinybadge/main.go (3.2%)</option>
 				
 				<option value="file2">ci.vikas.com/shinybadge/util.go (100.0%)</option>
 				
@@ -174,19 +174,19 @@ import (
 func Sum(i, j int) int <span class="cov8" title="1">{
         return i + j
 }</span>
-func getCommandOutput(commandString string) chan float64 <span class="cov8" title="1">{
+func getCommandOutput(commandString string) chan float64 <span class="cov0" title="0">{
         cmd := exec.Command("bash", "-c", commandString)
         cmd.Stderr = os.Stderr
         stdout, err := cmd.StdoutPipe()
         if nil != err </span><span class="cov0" title="0">{
                 log.Fatalf("Error obtaining stdout: %s", err.Error())
         }</span>
-        <span class="cov8" title="1">reader := bufio.NewReader(stdout)
+        <span class="cov0" title="0">reader := bufio.NewReader(stdout)
         coverageFloatChannel := make(chan float64)
-        go func(reader io.Reader) </span><span class="cov8" title="1">{
+        go func(reader io.Reader) </span><span class="cov0" title="0">{
                 re := regexp.MustCompile("cover(?:ed|(?:age))*:? *(\\d+\\.?\\d*) *%")
                 scanner := bufio.NewScanner(reader)
-                for scanner.Scan() </span><span class="cov8" title="1">{
+                for scanner.Scan() </span><span class="cov0" title="0">{
                         lineText := scanner.Text()
                         match := re.FindStringSubmatch(lineText)
                         if len(match) == 2 </span><span class="cov0" title="0">{
@@ -198,15 +198,15 @@ func getCommandOutput(commandString string) chan float64 <span class="cov8" titl
                                         coverageFloatChannel &lt;- coverageValue
                                 }</span>
                                 <span class="cov0" title="0">break</span>
-                        } else<span class="cov8" title="1"> {
+                        } else<span class="cov0" title="0"> {
                                 fmt.Println(lineText)
                         }</span>
                 }
         }(reader)
-        <span class="cov8" title="1">if err := cmd.Start(); nil != err </span><span class="cov0" title="0">{
+        <span class="cov0" title="0">if err := cmd.Start(); nil != err </span><span class="cov0" title="0">{
                 log.Fatalf("Error starting program: %s, %s", cmd.Path, err.Error())
         }</span>
-        <span class="cov8" title="1">cmd.Wait()
+        <span class="cov0" title="0">cmd.Wait()
         return coverageFloatChannel</span>
 }
 func main() <span class="cov0" title="0">{
