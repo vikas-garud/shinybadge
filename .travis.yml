@@ -27,6 +27,7 @@ before_install:
   - sudo apt-get -y update
   - sudo apt-get -y purge cmake
   - go get github.com/onsi/gomega
+
   #- go get github.com/onsi/ginkgo/ginkgo
   #- go get github.com/modocache/gover
  
@@ -49,17 +50,17 @@ install:
   #- cp -R . $GOPATH/src/github.ibm.com/kms/key-protect || true
   #- cd $GOPATH/src/github.ibm.com/kms/key-protect
   #- go get -v github.com/codeclimate/test-reporter
-  - go get -u github.com/fatih/color
-  - go get -u github.com/fogleman/gg
-	- go get -u github.com/golang/freetype/truetype
-	- go get -u golang.org/x/image/font
-	- go get -u golang.org/x/image/font/gofont/goregular
+  - go get github.com/fatih/color
+  - go get github.com/fogleman/gg
+	- go get github.com/golang/freetype/truetype
+	- go get golang.org/x/image/font
+	- go get golang.org/x/image/font/gofont/goregular
   - mkdir -p $GOPATH/src/ci.vikas.com/shinybadge
   - cp -R . $GOPATH/src/ci.vikas.com/shinybadge || true
   - cd $GOPATH/src/ci.vikas.com/shinybadge
   - echo "pwd ....."
   - pwd
-  
+
 script:
   - make compile
   - make vet

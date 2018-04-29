@@ -42,11 +42,12 @@ lint:
     desc: Run gas on all go files
     cmds:
       -  gas -quiet -exclude=G104 ./... 2>&1
-      
+
   build:
    desc: Run go vet on all go files
     cmds:
-	    - go build
+      - pwd
+      - go build
   run:
    desc: Run go vet on all go files
     cmds:
