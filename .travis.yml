@@ -1,0 +1,71 @@
+language: go
+dist: trusty
+sudo: required
+
+os:
+  - linux
+
+go:
+  - '1.10'
+
+env:
+  global:
+    - PKCS11_SHARED_LIB=""
+    - WGET_CMD="wget --tries=10 --retry-connrefused --connect-timeout=3 --read-timeout=5 --waitretry=2 --quiet"
+
+addons:
+  apt:
+    packages:
+      - autoconf
+      - automake
+      - build-essential
+      - libtool
+      - uuid-dev
+
+before_install:
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get -y update
+  - sudo apt-get -y purge cmake
+  - go get github.com/onsi/gomega
+  #- go get github.com/onsi/ginkgo/ginkgo
+  #- go get github.com/modocache/gover
+ 
+
+install:
+  - sudo apt-get -y install --no-install-recommends g++-6 cppcheck vera++ shellcheck
+  - sudo apt-get -y install --no-install-recommends libgflags-dev libgtest-dev libc++-dev
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
+  - $WGET_CMD https://cmake.org/files/v3.9/cmake-3.9.0-Linux-x86_64.tar.gz
+  - tar xzf cmake-3.9.0-Linux-x86_64.tar.gz
+  - sudo cp `pwd`/cmake-3.9.0-Linux-x86_64/bin/* /usr/local/bin/
+  - go get -u github.com/golang/lint/golint
+  - go get -u github.com/GoASTScanner/gas/cmd/gas/...
+  #- go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
+  #- go get -u google.golang.org/grpc
+  - npm i -g markdownlint-cli@0.3.1
+  - $WGET_CMD https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+  - sudo cp jq-linux64 /usr/local/bin/jq && sudo chmod +x /usr/local/bin/jq
+  #- mkdir -p $GOPATH/src/github.ibm.com/kms/key-protect
+  #- cp -R . $GOPATH/src/github.ibm.com/kms/key-protect || true
+  #- cd $GOPATH/src/github.ibm.com/kms/key-protect
+  #- go get -v github.com/codeclimate/test-reporter
+  - mkdir -p $GOPATH/src/ci.vikas.com/shinybadge
+  - cp -R . $GOPATH/src/ci.vikas.com/shinybadge || true
+  - cd $GOPATH/src/ci.vikas.com/shinybadge
+
+script:
+  - make compile
+  - make vet
+  - make lint
+  - make gas
+  - make last
+  - make build
+  - make run
+  - make test
+  - make cover
+
+after_success:
+  - echo "my........ root travis.yml after_success"
+  #- ./scripts/calculateCoverage.sh
+  #- ./scripts/publishCoverage.sh
+

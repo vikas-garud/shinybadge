@@ -1,0 +1,75 @@
+version: '2'
+
+vars:
+  SEMVER:
+    sh: cat VERSION
+  GIT_URL_PREFIX: git@github.ibm.com:Alchemy-Key-Protect
+  GIT_BRANCH:
+    sh: git rev-parse --abbrev-ref HEAD
+
+lint:
+    deps: [tools]
+    desc: Run linters on all sources
+    cmds:
+      - badfmt=`gofmt -e -l $(find . -name "*.go" | grep -v "/vendor/")` && (test -z "${badfmt}" || (echo "Run gofmt on the following files:" && echo "${badfmt}" && exit 1))
+      # Uncomment the below commands once the linters pass
+      #- golint -set_exit_status $(go list ./...)
+      #- cd hsm-middleware && task lint
+
+  compile:
+    desc: Compiles all buildable services
+    silent: true
+    cmds:
+      - |-
+        for d in `find . -maxdepth 2 -mindepth 2 -name "main.go" | xargs -n1 dirname`; do
+          pushd $d
+          echo "Compiling $d"
+          task compile || exit 2
+          popd
+        done
+  vet:
+    desc: Run go vet on all go files
+    cmds:
+      - go vet -v $(go list ./...)
+
+  fmt:
+    desc: run go fmt on all go files
+    cmds:
+      - go fmt $(go list ./...)
+
+  gas:
+    deps: [tools]
+    desc: Run gas on all go files
+    cmds:
+      -  gas -quiet -exclude=G104 ./... 2>&1
+      
+  build:
+   desc: Run go vet on all go files
+    cmds:
+	    - go build
+  run:
+   desc: Run go vet on all go files
+    cmds:
+      - ./shinybadge
+  test:
+   desc: Run go vet on all go files
+    cmds:
+      - go test -v
+  cover:
+   desc: Run go vet on all go files
+    cmds:
+      - go test -coverprofile=coverage.out && go tool cover -html=coverage.out -o=coverage.html
+  coverage:
+   desc: Run go vet on all go files
+    cmds:
+      - go test -coverprofile=coverage.out && go tool cover -html=coverage.out -o=coverage.html
+  configure:
+   desc: Run go vet on all go files
+    cmds:
+      - make dep
+  dep:
+   desc: Run go vet on all go files
+    cmds:
+      if ! [ -x "$(command -v dep)" ]; then\
+        go get github.com/golang/dep/cmd/dep;\
+      fi && dep ensure;
