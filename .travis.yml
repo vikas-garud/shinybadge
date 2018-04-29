@@ -52,6 +52,9 @@ install:
   - mkdir -p $GOPATH/src/ci.vikas.com/shinybadge
   - cp -R . $GOPATH/src/ci.vikas.com/shinybadge || true
   - cd $GOPATH/src/ci.vikas.com/shinybadge
+  - echo "pwd ....."
+  - pwd
+  #/Users/vgarud/code/go/src/ci.vikas.com/shinybadge
 
 script:
   - make compile
