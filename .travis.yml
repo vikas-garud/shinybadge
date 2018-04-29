@@ -47,18 +47,18 @@ install:
   - echo "hhhhhhhhhhhhh"
   - go get github.com/fatih/color
   - go get github.com/fogleman/gg
-	- go get github.com/golang/freetype/truetype
-	- go get golang.org/x/image/font
-	- go get golang.org/x/image/font/gofont/goregular
+  - go get github.com/golang/freetype/truetype
+  - go get golang.org/x/image/font
+  - go get golang.org/x/image/font/gofont/goregular
   - mkdir -p $GOPATH/src/ci.vikas.com/shinybadge
   - cp -R . $GOPATH/src/ci.vikas.com/shinybadge || true
   - cd $GOPATH/src/ci.vikas.com/shinybadge
-  - echo "pwd ....."
+  - echo "pwd ..."
   - pwd
 
   #- go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
   #- go get -u google.golang.org/grpc
-
+  
 
   #- mkdir -p $GOPATH/src/github.ibm.com/kms/key-protect
   #- cp -R . $GOPATH/src/github.ibm.com/kms/key-protect || true
