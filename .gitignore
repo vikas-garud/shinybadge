@@ -1,0 +1,5 @@
+.env
+coverage.*
+.vscode/settings.json
+shinybadge
+tmp
