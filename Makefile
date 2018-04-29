@@ -1,7 +1,7 @@
 build:
 	go build
 run:
-	make build && ./gopherbadger
+	make build && ./shinybadge
 test:
 	go test -v
 cover:

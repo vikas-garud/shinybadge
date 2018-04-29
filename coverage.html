@@ -54,7 +54,11 @@
 			<div id="nav">
 				<select id="files">
 				
-				<option value="file0">shinybadge/main.go (33.3%)</option>
+				<option value="file0">ci.vikas.com/shinybadge/badge.go (97.9%)</option>
+				
+				<option value="file1">ci.vikas.com/shinybadge/main.go (58.1%)</option>
+				
+				<option value="file2">ci.vikas.com/shinybadge/util.go (100.0%)</option>
 				
 				</select>
 			</div>
@@ -70,16 +74,161 @@
 		
 		<pre class="file" id="file0" style="display: none">package main
 
-import "fmt"
+import (
+        "errors"
+        "fmt"
+
+        "github.com/fogleman/gg"
+        "github.com/golang/freetype/truetype"
+        "golang.org/x/image/font"
+        "golang.org/x/image/font/gofont/goregular"
+)
+
+func loadGoFontFace(points float64) (font.Face, error) <span class="cov8" title="1">{
+        f, err := truetype.Parse(goregular.TTF)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">face := truetype.NewFace(f, &amp;truetype.Options{
+                Size: points,
+                // Hinting: font.HintingFull,
+        })
+        return face, nil</span>
+}
+
+func drawBadge(coveragePct float64, filename string) error <span class="cov8" title="1">{
+        //Grey
+        colorGrey := "#777"
+        colorDarkGrey := "#333"
+        //Green: &gt;= 80% overall coverage
+        colorGreen := "#00cc1e"
+        colorDarkGreen := "#049100"
+        //Yellow: 65% &lt;= overall coverage &lt; 80%
+        colorYellow := "#e2bd00"
+        colorDarkYellow := "#c6a601"
+        //Red: &lt; 65% overall coverage
+        colorRed := "#db1a08"
+        colorDarkRed := "#a31204"
+        var accentColor, accentBorderColor string
+        if coveragePct &gt;= 80 </span><span class="cov8" title="1">{
+                accentColor = colorGreen
+                accentBorderColor = colorDarkGreen
+        }</span> else<span class="cov8" title="1"> if coveragePct &gt;= 55 </span><span class="cov8" title="1">{
+                accentColor = colorYellow
+                accentBorderColor = colorDarkYellow
+        }</span> else<span class="cov8" title="1"> if coveragePct &gt;= 0 </span><span class="cov8" title="1">{
+                accentColor = colorRed
+                accentBorderColor = colorDarkRed
+        }</span> else<span class="cov8" title="1"> {
+                return errors.New("Coverage value must be &gt;= 0%")
+        }</span>
+        //Create graphics context
+        <span class="cov8" title="1">dc := gg.NewContext(600, 120)
+
+        //Draw background rectangle
+        dc.DrawRoundedRectangle(6, 6, 600-6*2, 120-6*2, 10)
+        dc.SetHexColor(accentColor)
+        dc.FillPreserve()
+        dc.SetHexColor(accentBorderColor)
+        dc.SetLineWidth(6.0)
+        dc.Stroke()
+
+        //Draw coverage background rectangle
+        dc.DrawRoundedRectangle(10, 10, 410-10*2, 120-10*2, 5)
+        dc.SetHexColor(colorDarkGrey)
+        dc.FillPreserve()
+        dc.SetHexColor(colorGrey)
+        dc.SetLineWidth(2.0)
+        dc.Stroke()
+
+        //Drawing text
+        fontFace, err := loadGoFontFace(72)
+        errCheck("Loading default font-face.", err)
+        dc.SetFontFace(fontFace)
+        dc.SetHexColor("#ffffffff")
+        dc.DrawString("Coverage:", 5+30, 120-5*2-30)
+        covPctString := fmt.Sprintf("%2.f", coveragePct) + "%"
+        dc.DrawString(covPctString, 410+15, 120-5*2-25)
+        //Save to file
+        err = dc.SavePNG(filename)
+        errCheck("Saving image file", err)
+        return err</span>
+}
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package main
+
+import (
+        "bufio"
+        "fmt"
+        "io"
+        "log"
+        "os"
+        "os/exec"
+        "regexp"
+        "strconv"
+
+        "github.com/fatih/color"
+)
 
 func Sum(i, j int) int <span class="cov8" title="1">{
         return i + j
 }</span>
-
+func getCommandOutput(commandString string) chan float64 <span class="cov8" title="1">{
+        cmd := exec.Command("bash", "-c", commandString)
+        cmd.Stderr = os.Stderr
+        stdout, err := cmd.StdoutPipe()
+        if nil != err </span><span class="cov0" title="0">{
+                log.Fatalf("Error obtaining stdout: %s", err.Error())
+        }</span>
+        <span class="cov8" title="1">reader := bufio.NewReader(stdout)
+        coverageFloatChannel := make(chan float64)
+        go func(reader io.Reader) </span><span class="cov8" title="1">{
+                re := regexp.MustCompile("cover(?:ed|(?:age))*:? *(\\d+\\.?\\d*) *%")
+                scanner := bufio.NewScanner(reader)
+                for scanner.Scan() </span><span class="cov8" title="1">{
+                        lineText := scanner.Text()
+                        match := re.FindStringSubmatch(lineText)
+                        if len(match) == 2 </span><span class="cov0" title="0">{
+                                color.Green(lineText)
+                                //fmt.Printf("Found coverage = %s%\n", match[1])
+                                coverageValue, err := strconv.ParseFloat(match[1], 32)
+                                errCheck("Parsing coverage to float", err)
+                                if err == nil </span><span class="cov0" title="0">{
+                                        coverageFloatChannel &lt;- coverageValue
+                                }</span>
+                                <span class="cov0" title="0">break</span>
+                        } else<span class="cov8" title="1"> {
+                                fmt.Println(lineText)
+                        }</span>
+                }
+        }(reader)
+        <span class="cov8" title="1">if err := cmd.Start(); nil != err </span><span class="cov0" title="0">{
+                log.Fatalf("Error starting program: %s, %s", cmd.Path, err.Error())
+        }</span>
+        <span class="cov8" title="1">cmd.Wait()
+        return coverageFloatChannel</span>
+}
 func main() <span class="cov0" title="0">{
         a := Sum(10, 20)
         fmt.Printf("this is sum [%d]\n", a)
+
+        var coverageFloat float64
+        coverageFloat = &lt;-getCommandOutput("make cover")
+        drawBadge(coverageFloat, "coverage_badge.png")
+
 }</span>
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package main
+
+import "log"
+
+func errCheck(taskDescription string, err error) <span class="cov8" title="1">{
+        if err != nil </span><span class="cov8" title="1">{
+                log.Println("Error w/ " + taskDescription + " : " + err.Error())
+        }</span>
+}
 </pre>
 		
 		</div>
