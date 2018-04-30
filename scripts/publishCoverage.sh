@@ -63,10 +63,10 @@ git clone -b $PAGES_BRANCH https://github.com/vikas-garud/vikas-garud.github.io.
 cd deploypages
 
 git config --global user.name "vikas-garud"
-#git config --global user.password $GIT_TOKENPAGES
+git config --global user.password $GIT_TOKENPAGES
 git config --global user.email "vg9288@gmail.com"
 git status
-git remote set-url origin git@github.com:vikas-garud/vikas-garud.github.io.git
+#git remote set-url origin git@github.com:vikas-garud/vikas-garud.github.io.git
 touch abdf.asdf
 git add -f .
 #git add $FILENAME_TO_DEPLOY....
