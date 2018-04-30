@@ -66,6 +66,7 @@ git config --global user.name "vikas-garud"
 git config --global user.password $GIT_TOKENPAGES
 git config --global user.email "vg9288@gmail.com"
 git status
+git remote show origin
 #git remote set-url origin git@github.com:vikas-garud/vikas-garud.github.io.git
 touch abdf.asdf
 git add -f .
