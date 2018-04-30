@@ -65,7 +65,7 @@ git push origin master
 
 
 
-curl -H 'Authorization: token $GIT_TOKENPAGES' https://github.com/vikas-garud/vikas-garud.github.io.git
+curl -H 'Authorization: token $GIT_TOKEN' https://github.com/vikas-garud/vikas-garud.github.io.git
 #git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKENNEW@github.com/vikas-garud/vikas-garud.github.io.git deploypages
 git clone -b $PAGES_BRANCH git@github.com:vikas-garud/vikas-garud.github.io.git deploypages
 #git clone -b master git@github.com:vikas-garud/vikas-garud.github.io.git deploypages
