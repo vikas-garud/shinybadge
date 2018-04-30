@@ -20,7 +20,7 @@ echo "TRAVIS_BRANCH     :"$TRAVIS_BRANCH
 echo "TRAVIS_BUILD_DIR  :"$TRAVIS_BUILD_DIR
 
 # clone and prepare gh-pages branch
-#git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKENNEW@github.com/$TRAVIS_REPO_SLUG.git tmp
+#git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git tmp
 git clone -b $PAGES_BRANCH git@github.com:vikas-garud/shinybadge.git tmp
 #git clone -b master git@github.com:vikas-garud/shinybadge.git tmp
 #git clone -b master https://vikas-garud:198fa57627b3f612bcb9efe9f8b001a37371c38e@github.com/vikas-garud/shinybadge.git tmp
