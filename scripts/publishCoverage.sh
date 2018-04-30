@@ -55,10 +55,14 @@ git push origin
 
 #deploying to pages, copying file coverage_badge.png to pages
 
+MYPAGES_TOKEN="5d29fc75f2151398790b4256de4586f5b305c93c"
+
+curl -H 'Authorization: token $MYPAGES_TOKEN' https://github.com/vikas-garud/vikas-garud.github.io.git
 git clone -b $ PAGES_BRANCH https://github.com/vikas-garud/vikas-garud.github.io.git deploypages
 
 cd deploypages
 git config user.name "vikas-garud"
+git config user.password $MYPAGES_TOKEN
 git config user.email "vg9288@gmail.com"
 git status
 git add $FILENAME_TO_DEPLOY
