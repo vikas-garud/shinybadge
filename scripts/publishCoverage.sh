@@ -9,6 +9,8 @@ GREEN_THRESHOLD=85
 YELLOW_THRESHOLD=50
 PAGES_BRANCH="master"
 
+FILENAME_TO_DEPLOY="coverage_badge.png"
+
 COMMIT_RANGE=(${TRAVIS_COMMIT_RANGE//.../ })
 CURRENT_COMMIT=${COMMIT_RANGE[1]}
 
@@ -49,4 +51,16 @@ git config user.email "vg9288@gmail.com"
 git status
 git add -A
 git commit -m "Coverage result for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
+git push origin
+
+#deploying to pages, copying file coverage_badge.png to pages
+
+git clone -b $ PAGES_BRANCH https://github.com/vikas-garud/vikas-garud.github.io.git deploypages
+
+cd deploypages
+git config user.name "vikas-garud"
+git config user.email "vg9288@gmail.com"
+git status
+git add $FILENAME_TO_DEPLOY
+git commit -m "deply coverage pages"
 git push origin
