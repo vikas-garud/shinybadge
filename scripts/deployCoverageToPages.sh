@@ -16,7 +16,7 @@ CURRENT_COMMIT=${COMMIT_RANGE[1]}
 # clone and prepare code coverage and create code coverage reports
 # primary purpose is to create code coverage for all subfolders in key-protect
 #--  ------------ creating code coverage reports ------------ 
-git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git tmp
+git clone -b $PAGES_BRANCH https://github.com/$TRAVIS_REPO_SLUG.git tmp
 cd tmp
 open .
 if [ ! -d "./coverage-report" ]; then
@@ -56,7 +56,7 @@ git push -u origin master
 # deploying to pages, copying file coverage_badge.png to pages repo
 # primary purpose is to deploy badges for all subfolders in key-protect
 #--  ------------ deploying pages, badges ------------ 
-git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/vikas-garud/vikas-garud.github.io.git deploypages
+git clone -b $PAGES_BRANCH https://github.com/vikas-garud/vikas-garud.github.io.git deploypages
 cd deploypages
 git config --global user.name "vikas-garud"
 git config --global user.email "vg9288@gmail.com"
