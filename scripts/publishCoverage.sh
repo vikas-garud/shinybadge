@@ -23,7 +23,8 @@ echo "TRAVIS_BUILD_DIR  :"$TRAVIS_BUILD_DIR
 git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git tmp
 #git clone -b $PAGES_BRANCH git@github.com:vikas-garud/shinybadge.git tmp
 #git clone -b master git@github.com:vikas-garud/shinybadge.git tmp
-#git clone -b master https://vikas-garud:b683349ee58a81def75b0277905bfcf98a34f934@github.com/vikas-garud/shinybadge.git tmp
+#git clone -b master https://vikas-garud: a5ed18677ea568625c70e6e4c4125887f1ec8aeb@github.com/vikas-garud/shinybadge.git tmp
+
 cd tmp
 open .
 if [ ! -d "./coverage-report" ]; then
@@ -51,12 +52,14 @@ curl https://img.shields.io/badge/Coverage-$COVERAGE%-$BADGE_COLOR.svg > ./cover
 git config --global user.name "vikas-garud"
 git config --global user.email "vg9288@gmail.com"
 git status
+
 #git remote set-url origin https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
-#git remote set-url origin https://vikas-garud:b683349ee58a81def75b0277905bfcf98a34f934@github.com/vikas-garud/shinybadge.git
+#git remote set-url origin https://vikas-garud: a5ed18677ea568625c70e6e4c4125887f1ec8aeb@github.com/vikas-garud/shinybadge.git
 #git remote add upstream https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
-#git remote add upstream https://vikas-garud:b683349ee58a81def75b0277905bfcf98a34f934@github.com/vikas-garud/shinybadge.git
+#git remote add upstream https://vikas-garud: a5ed18677ea568625c70e6e4c4125887f1ec8aeb@github.com/vikas-garud/shinybadge.git
 #git add ./
-git add -A
+
+git add ./
 git commit -m "Coverage result .....for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
 #git commit -m "Coverage result ...for commit CURRENT_COMMIT from build TRAVIS_BUILD_NUMBER"
 #git push origin
