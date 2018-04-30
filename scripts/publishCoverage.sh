@@ -50,7 +50,7 @@ git config user.name "vikas-garud"
 git config user.email "vg9288@gmail.com"
 git status
 git add -A
-git commit -m "Coverage result for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
+git commit -m "Coverage result ..for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
 git push origin
 
 #deploying to pages, copying file coverage_badge.png to pages
@@ -63,6 +63,7 @@ git clone -b $PAGES_BRANCH https://github.com/vikas-garud/vikas-garud.github.io.
 cd deploypages
 
 git config user.name "vikas-garud"
+git config user.password $GIT_TOKENPAGES
 git config user.email "vg9288@gmail.com"
 git status
 git remote set-url origin git@github.com:vikas-garud/vikas-garud.github.io.git
