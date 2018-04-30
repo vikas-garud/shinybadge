@@ -53,10 +53,12 @@ git config --global user.name "vikas-garud"
 git config --global user.email "vg9288@gmail.com"
 git status
 
+#git clone -b master https://f9b61567bf36db799dc4ca22fe522671c4ded113@github.com/vikas-garud/shinybadge.git tmp
+
 #git remote set-url origin https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
-#git remote set-url origin https://vikas-garud:ae2fdba82ca5c1a12c223d27f995d1881e3b88af@github.com/vikas-garud/shinybadge.git
+#git remote set-url origin https://vikas-garud: f9b61567bf36db799dc4ca22fe522671c4ded113@github.com/vikas-garud/shinybadge.git
 #git remote add upstream https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
-#git remote add upstream https://vikas-garud:ae2fdba82ca5c1a12c223d27f995d1881e3b88af@github.com/vikas-garud/shinybadge.git
+#git remote add upstream https://vikas-garud: f9b61567bf36db799dc4ca22fe522671c4ded113@github.com/vikas-garud/shinybadge.git
 #git add ./
 
 
