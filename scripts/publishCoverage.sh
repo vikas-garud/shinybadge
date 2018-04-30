@@ -24,6 +24,7 @@ echo "TRAVIS_BUILD_DIR  :"$TRAVIS_BUILD_DIR
 
 # clone and prepare gh-pages branch
 git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKENNEW@github.com/$TRAVIS_REPO_SLUG.git tmp
+#git clone git@github.com:vikas-garud/shinybadge.git
 cd tmp
 
 if [ ! -d "./coverage-report" ]; then
@@ -53,6 +54,7 @@ git config --global user.email "vg9288@gmail.com"
 git status
 git add -A
 git commit -m "Coverage result ...for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
+#git commit -m "Coverage result ...for commit CURRENT_COMMIT from build TRAVIS_BUILD_NUMBER"
 git push origin
 
 #deploying to pages, copying file coverage_badge.png to pages
