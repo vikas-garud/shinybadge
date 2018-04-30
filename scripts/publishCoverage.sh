@@ -61,10 +61,12 @@ curl -H 'Authorization: token $MYPAGES_TOKEN' https://github.com/vikas-garud/vik
 git clone -b $PAGES_BRANCH https://github.com/vikas-garud/vikas-garud.github.io.git deploypages
 
 cd deploypages
+
 git config user.name "vikas-garud"
-git config user.password $MYPAGES_TOKEN
 git config user.email "vg9288@gmail.com"
 git status
-git add $FILENAME_TO_DEPLOY
-git commit -m "deply coverage pages"
-git push origin
+touch asdf.asdf
+git add -f .
+#git add $FILENAME_TO_DEPLOY
+git commit -m "Travis build $TRAVIS_BUILD_NUMBER , deply coverage pages"
+git push origin master
