@@ -14,14 +14,16 @@ FILENAME_TO_DEPLOY="coverage_badge.png"
 COMMIT_RANGE=(${TRAVIS_COMMIT_RANGE//.../ })
 CURRENT_COMMIT=${COMMIT_RANGE[1]}
 
+GIT_TOKENNEW=$GIT_TOKEN
+
 echo "PAGES_BRANCH      :"$PAGES_BRANCH
-echo "GIT_TOKEN         :"$GIT_TOKEN
+echo "GIT_TOKEN         :"$GIT_TOKENNEW
 echo "TRAVIS_REPO_SLUG  :"$TRAVIS_REPO_SLUG
 echo "TRAVIS_BRANCH     :"$TRAVIS_BRANCH
 echo "TRAVIS_BUILD_DIR  :"$TRAVIS_BUILD_DIR
 
 # clone and prepare gh-pages branch
-git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git tmp
+git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKENNEW@github.com/$TRAVIS_REPO_SLUG.git tmp
 cd tmp
 
 if [ ! -d "./coverage-report" ]; then
@@ -55,17 +57,17 @@ git push origin
 
 #deploying to pages, copying file coverage_badge.png to pages
 
-MYPAGES_TOKEN=$GIT_TOKENPAGES
+
 
 curl -H 'Authorization: token $GIT_TOKENPAGES' https://github.com/vikas-garud/vikas-garud.github.io.git
-git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/vikas-garud/vikas-garud.github.io.git deploypages
+git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKENNEW@github.com/vikas-garud/vikas-garud.github.io.git deploypages
 
 #git clone -b master https://vikas-garud:6f4cdb1334a865e9ed7cad397e0c9a6d32b97352@github.com/vikas-garud/vikas-garud.github.io.git deploypages
 
 cd deploypages
 
-echo "GIT_TOKENPAGES  :"$GIT_TOKENPAGES
-echo "GIT_TOKEN       ..:"$GIT_TOKEN
+
+echo "GIT_TOKEN       ..:"$GIT_TOKENNEW
 git config --global user.name "vikas-garud"
 #git config --global user.password $GIT_TOKENPAGES
 git config --global user.email "vg9288@gmail.com"
