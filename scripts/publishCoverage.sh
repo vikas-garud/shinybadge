@@ -46,8 +46,8 @@ if [[ ! -f $TRAVIS_BUILD_DIR/cover_percent.out  ]]; then
 fi
 
 curl https://img.shields.io/badge/Coverage-$COVERAGE%-$BADGE_COLOR.svg > ./coverage-report/$TRAVIS_BRANCH/badge.svg
-git config user.name "vikas-garud"
-git config user.email "vg9288@gmail.com"
+git config --global user.name "vikas-garud"
+git config --global user.email "vg9288@gmail.com"
 git status
 git add -A
 git commit -m "Coverage result ..for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
@@ -62,9 +62,9 @@ git clone -b $PAGES_BRANCH https://github.com/vikas-garud/vikas-garud.github.io.
 
 cd deploypages
 
-git config user.name "vikas-garud"
-git config user.password $GIT_TOKENPAGES
-git config user.email "vg9288@gmail.com"
+git config --global user.name "vikas-garud"
+#git config --global user.password $GIT_TOKENPAGES
+git config --global user.email "vg9288@gmail.com"
 git status
 git remote set-url origin git@github.com:vikas-garud/vikas-garud.github.io.git
 touch abdf.asdf
