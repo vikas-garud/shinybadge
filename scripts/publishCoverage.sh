@@ -68,9 +68,9 @@ git config --global user.email "vg9288@gmail.com"
 git status
 git remote -v 
 git remote remove origin 
-#git remote add origin git@github.com:vikas-garud/vikas-garud.github.io.git
+git remote add origin git@github.com:vikas-garud/vikas-garud.github.io.git
 
-git remote add origin https://vikas-garud:$GIT_TOKENPAGES@github.com/vikas-garud/vikas-garud.github.io.git
+#git remote add origin https://vikas-garud:$GIT_TOKENPAGES@github.com/vikas-garud/vikas-garud.github.io.git
 #git remote set-url origin git@github.com:vikas-garud/vikas-garud.github.io.git
 touch abdf.asdf
 git add -f .
