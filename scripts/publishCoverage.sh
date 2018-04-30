@@ -67,7 +67,7 @@ git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKENNEW@github.com/vikas-ga
 cd deploypages
 
 
-echo "GIT_TOKEN       ..:"$GIT_TOKENNEW
+echo "GIT_TOKEN       ...:"$GIT_TOKENNEW
 git config --global user.name "vikas-garud"
 #git config --global user.password $GIT_TOKENPAGES
 git config --global user.email "vg9288@gmail.com"
