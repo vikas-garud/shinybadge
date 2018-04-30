@@ -65,11 +65,11 @@ git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/vikas-garud
 cd deploypages
 
 echo "GIT_TOKENPAGES  :"$GIT_TOKENPAGES
-echo "GIT_TOKEN       :"$GIT_TOKEN
+echo "GIT_TOKEN       ..:"$GIT_TOKEN
 git config --global user.name "vikas-garud"
 #git config --global user.password $GIT_TOKENPAGES
 git config --global user.email "vg9288@gmail.com"
-git status
+
 #git remote -v 
 #git remote remove origin 
 #git remote add origin git@github.com:vikas-garud/vikas-garud.github.io.git
@@ -81,6 +81,7 @@ git status
 #git remote add origin https://github.com:vikas-garud/vikas-garud.github.io.git
 
 touch abdf.asdf
+git status
 git add -f .
 #git add $FILENAME_TO_DEPLOY....
 git commit -m "Travis build $TRAVIS_BUILD_NUMBER , deply coverage pages"
