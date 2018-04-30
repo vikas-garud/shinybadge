@@ -25,7 +25,7 @@ git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REP
 #git clone -b master git@github.com:vikas-garud/shinybadge.git tmp
 #git clone -b master https://vikas-garud:198fa57627b3f612bcb9efe9f8b001a37371c38e@github.com/vikas-garud/shinybadge.git tmp
 cd tmp
-
+open .
 if [ ! -d "./coverage-report" ]; then
 	mkdir "coverage-report"
 fi
@@ -51,12 +51,13 @@ curl https://img.shields.io/badge/Coverage-$COVERAGE%-$BADGE_COLOR.svg > ./cover
 git config --global user.name "vikas-garud"
 git config --global user.email "vg9288@gmail.com"
 git status
-#git add -A
-git add ./
+git remote add upstream https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
+#git add ./
+git add -A
 git commit -m "Coverage result .....for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
 #git commit -m "Coverage result ...for commit CURRENT_COMMIT from build TRAVIS_BUILD_NUMBER"
 #git push origin
-git push origin
+git push -u origin master
 
 #deploying to pages, copying file coverage_badge.png to pages
 
