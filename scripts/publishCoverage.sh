@@ -54,10 +54,11 @@ git config --global user.email "vg9288@gmail.com"
 git status
 
 #git remote set-url origin https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
-#git remote set-url origin https://vikas-garud: a5ed18677ea568625c70e6e4c4125887f1ec8aeb@github.com/vikas-garud/shinybadge.git
+#git remote set-url origin https://vikas-garud:ae2fdba82ca5c1a12c223d27f995d1881e3b88af@github.com/vikas-garud/shinybadge.git
 #git remote add upstream https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
-#git remote add upstream https://vikas-garud: a5ed18677ea568625c70e6e4c4125887f1ec8aeb@github.com/vikas-garud/shinybadge.git
+#git remote add upstream https://vikas-garud:ae2fdba82ca5c1a12c223d27f995d1881e3b88af@github.com/vikas-garud/shinybadge.git
 #git add ./
+
 
 git add ./
 git commit -m "Coverage result ...for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
