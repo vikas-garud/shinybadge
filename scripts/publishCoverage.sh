@@ -20,8 +20,8 @@ echo "TRAVIS_BRANCH     :"$TRAVIS_BRANCH
 echo "TRAVIS_BUILD_DIR  :"$TRAVIS_BUILD_DIR
 
 # clone and prepare gh-pages branch
-#git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git tmp
-git clone -b $PAGES_BRANCH git@github.com:vikas-garud/shinybadge.git tmp
+git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git tmp
+#git clone -b $PAGES_BRANCH git@github.com:vikas-garud/shinybadge.git tmp
 #git clone -b master git@github.com:vikas-garud/shinybadge.git tmp
 #git clone -b master https://vikas-garud:198fa57627b3f612bcb9efe9f8b001a37371c38e@github.com/vikas-garud/shinybadge.git tmp
 cd tmp
@@ -62,9 +62,9 @@ git push origin master
 
 
 
-curl -H 'Authorization: token $GIT_TOKEN' https://github.com/vikas-garud/vikas-garud.github.io.git
-#git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKENNEW@github.com/vikas-garud/vikas-garud.github.io.git deploypages
-git clone -b $PAGES_BRANCH git@github.com:vikas-garud/vikas-garud.github.io.git deploypages
+#curl -H 'Authorization: token $GIT_TOKEN' https://github.com/vikas-garud/vikas-garud.github.io.git
+git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/vikas-garud/vikas-garud.github.io.git deploypages
+#git clone -b $PAGES_BRANCH git@github.com:vikas-garud/vikas-garud.github.io.git deploypages
 #git clone -b master git@github.com:vikas-garud/vikas-garud.github.io.git deploypages
 
 #git clone -b master https://vikas-garud:6f4cdb1334a865e9ed7cad397e0c9a6d32b97352@github.com/vikas-garud/vikas-garud.github.io.git deploypages
