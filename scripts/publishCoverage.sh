@@ -14,7 +14,7 @@ FILENAME_TO_DEPLOY="coverage_badge.png"
 COMMIT_RANGE=(${TRAVIS_COMMIT_RANGE//.../ })
 CURRENT_COMMIT=${COMMIT_RANGE[1]}
 
-echo "PAGES_BRANCH      :"$PAGES_BRANCH
+echo "PAGES_BRANCH     . :"$PAGES_BRANCH
 echo "TRAVIS_REPO_SLUG  :"$TRAVIS_REPO_SLUG
 echo "TRAVIS_BRANCH     :"$TRAVIS_BRANCH
 echo "TRAVIS_BUILD_DIR  :"$TRAVIS_BUILD_DIR
@@ -56,7 +56,7 @@ git add ./
 git commit -m "Coverage result .....for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
 #git commit -m "Coverage result ...for commit CURRENT_COMMIT from build TRAVIS_BUILD_NUMBER"
 #git push origin
-git push origin master
+git push origin
 
 #deploying to pages, copying file coverage_badge.png to pages
 
@@ -89,5 +89,5 @@ git add ./
 #git add $FILENAME_TO_DEPLOY....
 git commit -m "Travis build $TRAVIS_BUILD_NUMBER , deply coverage pages"
 #git push --set-upstream origin master
-git push origin master
+git push origin
 
