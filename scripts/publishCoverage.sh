@@ -59,23 +59,21 @@ git add ./
 git commit -m "Coverage result .....for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
 #git commit -m "Coverage result ...for commit CURRENT_COMMIT from build TRAVIS_BUILD_NUMBER"
 #git push origin
-git push
+git push origin master
 
 #deploying to pages, copying file coverage_badge.png to pages
 
 
 
 curl -H 'Authorization: token $GIT_TOKENPAGES' https://github.com/vikas-garud/vikas-garud.github.io.git
-git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKENNEW@github.com/vikas-garud/vikas-garud.github.io.git deploypages
+#git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKENNEW@github.com/vikas-garud/vikas-garud.github.io.git deploypages
+git clone -b $PAGES_BRANCH git@github.com:vikas-garud/vikas-garud.github.io.git deploypages
+#git clone -b master git@github.com:vikas-garud/vikas-garud.github.io.git deploypages
 
 #git clone -b master https://vikas-garud:6f4cdb1334a865e9ed7cad397e0c9a6d32b97352@github.com/vikas-garud/vikas-garud.github.io.git deploypages
 
 cd deploypages
-
-
-echo "GIT_TOKEN       ...:"$GIT_TOKENNEW
 git config --global user.name "vikas-garud"
-#git config --global user.password $GIT_TOKENPAGES
 git config --global user.email "vg9288@gmail.com"
 
 #git remote -v 
@@ -90,9 +88,9 @@ git config --global user.email "vg9288@gmail.com"
 
 touch abdf.asdf
 git status
-git add -f .
+git add ./
 #git add $FILENAME_TO_DEPLOY....
 git commit -m "Travis build $TRAVIS_BUILD_NUMBER , deply coverage pages"
 #git push --set-upstream origin master
-git push
+git push origin master
 
