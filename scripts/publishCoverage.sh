@@ -63,7 +63,7 @@ git status
 
 
 git add ./
-git commit -m "Coverage result ...for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
+git commit -m "Coverage result .....for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
 #git commit -m "Coverage result .....for commit CURRENT_COMMIT from build TRAVIS_BUILD_NUMBER"
 #git push origin
 git push -u origin master
