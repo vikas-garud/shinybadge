@@ -62,6 +62,7 @@ git clone -b $PAGES_BRANCH https://github.com/vikas-garud/vikas-garud.github.io.
 
 cd deploypages
 
+echo "GIT_TOKENPAGES  :"$GIT_TOKENPAGES
 git config --global user.name "vikas-garud"
 git config --global user.password $GIT_TOKENPAGES
 git config --global user.email "vg9288@gmail.com"
@@ -76,5 +77,5 @@ touch abdf.asdf
 git add -f .
 #git add $FILENAME_TO_DEPLOY....
 git commit -m "Travis build $TRAVIS_BUILD_NUMBER , deply coverage pages"
-git push -u origin master
+git push
 
