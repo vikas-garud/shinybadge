@@ -58,9 +58,9 @@ git push origin
 MYPAGES_TOKEN=$GIT_TOKENPAGES
 
 curl -H 'Authorization: token $GIT_TOKENPAGES' https://github.com/vikas-garud/vikas-garud.github.io.git
-git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKENPAGES@github.com/vikas-garud/vikas-garud.github.io.git deploypages
+git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/vikas-garud/vikas-garud.github.io.git deploypages
 
-#git clone -b master https://vikas-garud:4c695213a36529d3b03d818f06371c052b5e95b4@github.com/vikas-garud/vikas-garud.github.io.git deploypages
+#git clone -b master https://vikas-garud:6f4cdb1334a865e9ed7cad397e0c9a6d32b97352@github.com/vikas-garud/vikas-garud.github.io.git deploypages
 
 cd deploypages
 
@@ -74,10 +74,12 @@ git status
 #git remote remove origin 
 #git remote add origin git@github.com:vikas-garud/vikas-garud.github.io.git
 
-#git remote add origin https://vikas-garud:$GIT_TOKENPAGES@github.com/vikas-garud/vikas-garud.github.io.git
+git remote add origin https://vikas-garud:$GIT_TOKEN@github.com/vikas-garud/vikas-garud.github.io.git
 
 
 #git remote set-url origin git@github.com:vikas-garud/vikas-garud.github.io.git
+#git remote add origin https://github.com:vikas-garud/vikas-garud.github.io.git
+
 touch abdf.asdf
 git add -f .
 #git add $FILENAME_TO_DEPLOY....
