@@ -23,7 +23,7 @@ echo "TRAVIS_BUILD_DIR  :"$TRAVIS_BUILD_DIR
 git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git tmp
 #git clone -b $PAGES_BRANCH git@github.com:vikas-garud/shinybadge.git tmp
 #git clone -b master git@github.com:vikas-garud/shinybadge.git tmp
-#git clone -b master https://vikas-garud:198fa57627b3f612bcb9efe9f8b001a37371c38e@github.com/vikas-garud/shinybadge.git tmp
+#git clone -b master https://vikas-garud:b683349ee58a81def75b0277905bfcf98a34f934@github.com/vikas-garud/shinybadge.git tmp
 cd tmp
 open .
 if [ ! -d "./coverage-report" ]; then
@@ -51,8 +51,10 @@ curl https://img.shields.io/badge/Coverage-$COVERAGE%-$BADGE_COLOR.svg > ./cover
 git config --global user.name "vikas-garud"
 git config --global user.email "vg9288@gmail.com"
 git status
-git remote set-url origin https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
-git remote add upstream https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
+#git remote set-url origin https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
+#git remote set-url origin https://vikas-garud:b683349ee58a81def75b0277905bfcf98a34f934@github.com/vikas-garud/shinybadge.git
+#git remote add upstream https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
+#git remote add upstream https://vikas-garud:b683349ee58a81def75b0277905bfcf98a34f934@github.com/vikas-garud/shinybadge.git
 #git add ./
 git add -A
 git commit -m "Coverage result .....for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
@@ -62,14 +64,12 @@ git push -u origin master
 
 #deploying to pages, copying file coverage_badge.png to pages
 
-
-
 #curl -H 'Authorization: token $GIT_TOKEN' https://github.com/vikas-garud/vikas-garud.github.io.git
 git clone -b $PAGES_BRANCH https://vikas-garud:$GIT_TOKEN@github.com/vikas-garud/vikas-garud.github.io.git deploypages
 #git clone -b $PAGES_BRANCH git@github.com:vikas-garud/vikas-garud.github.io.git deploypages
 #git clone -b master git@github.com:vikas-garud/vikas-garud.github.io.git deploypages
 
-#git clone -b master https://vikas-garud:6f4cdb1334a865e9ed7cad397e0c9a6d32b97352@github.com/vikas-garud/vikas-garud.github.io.git deploypages
+#git clone -b master https://vikas-garud:b683349ee58a81def75b0277905bfcf98a34f934@github.com/vikas-garud/vikas-garud.github.io.git deploypages
 
 cd deploypages
 git config --global user.name "vikas-garud"
