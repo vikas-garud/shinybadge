@@ -74,7 +74,7 @@ git status
 #git remote remove origin 
 #git remote add origin git@github.com:vikas-garud/vikas-garud.github.io.git
 
-git remote add origin https://vikas-garud:$GIT_TOKEN@github.com/vikas-garud/vikas-garud.github.io.git
+#git remote add origin https://vikas-garud:$GIT_TOKEN@github.com/vikas-garud/vikas-garud.github.io.git
 
 
 #git remote set-url origin git@github.com:vikas-garud/vikas-garud.github.io.git
