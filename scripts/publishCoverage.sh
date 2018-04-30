@@ -51,6 +51,7 @@ curl https://img.shields.io/badge/Coverage-$COVERAGE%-$BADGE_COLOR.svg > ./cover
 git config --global user.name "vikas-garud"
 git config --global user.email "vg9288@gmail.com"
 git status
+git remote set-url origin https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
 git remote add upstream https://vikas-garud:$GIT_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
 #git add ./
 git add -A
