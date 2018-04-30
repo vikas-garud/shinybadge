@@ -58,7 +58,7 @@ git push origin
 MYPAGES_TOKEN=$GIT_TOKENPAGES
 
 curl -H 'Authorization: token $MYPAGES_TOKEN' https://github.com/vikas-garud/vikas-garud.github.io.git
-git clone -b $ PAGES_BRANCH https://github.com/vikas-garud/vikas-garud.github.io.git deploypages
+git clone -b $PAGES_BRANCH https://github.com/vikas-garud/vikas-garud.github.io.git deploypages
 
 cd deploypages
 git config user.name "vikas-garud"
