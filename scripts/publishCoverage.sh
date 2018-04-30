@@ -77,5 +77,5 @@ touch abdf.asdf
 git add -f .
 #git add $FILENAME_TO_DEPLOY....
 git commit -m "Travis build $TRAVIS_BUILD_NUMBER , deply coverage pages"
-git push
+git push --set-upstream origin master
 
