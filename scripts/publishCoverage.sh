@@ -54,9 +54,10 @@ git config --global user.email "vg9288@gmail.com"
 git status
 #git add -A
 git add ./
-git commit -m "Coverage result ...for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
+git commit -m "Coverage result .....for commit $CURRENT_COMMIT from build $TRAVIS_BUILD_NUMBER"
 #git commit -m "Coverage result ...for commit CURRENT_COMMIT from build TRAVIS_BUILD_NUMBER"
-git push origin
+#git push origin
+git push
 
 #deploying to pages, copying file coverage_badge.png to pages
 
